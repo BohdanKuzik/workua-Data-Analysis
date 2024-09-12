@@ -14,7 +14,10 @@ NEWSPIDER_MODULE = "scrapper.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "scrapper (+http://www.yourdomain.com)"
+DEFAULT_REQUEST_HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36',
+}
+
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -95,3 +98,4 @@ FEED_URI = "output/jobs.csv"
 FEED_FORMAT = "csv"
 FEED_EXPORT_FIELDS = ["title", "skills", "salary", "company", "description", "link"]
 FEED_OVERWRITE = True
+DOWNLOAD_DELAY = 1

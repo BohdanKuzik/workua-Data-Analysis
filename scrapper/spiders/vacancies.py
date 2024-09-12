@@ -17,9 +17,10 @@ class WorkUaJobsSpider(scrapy.Spider):
                 link = response.urljoin(link)
                 yield response.follow(link, self.parse_job_details, meta={"link": link})
 
-        next_page = response.xpath("//a[@rel='next']/@href").get()
+        next_page = response.xpath("//a[@class='link-icon' and contains(@href, 'page')]/@href").get()
         if next_page:
             next_page = response.urljoin(next_page)
+            self.logger.info(f"Navigating to next page: {next_page}")
             yield response.follow(next_page, self.parse)
 
     def parse_job_details(self, response: Response):
